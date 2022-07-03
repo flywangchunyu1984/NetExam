@@ -1,0 +1,3 @@
+context:
+  listener:
+    classes:com.exam.DemoSpringApplicationRunListener
