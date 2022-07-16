@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: './',//本地'/'
     proxyTable: {
       '/api': {
-        target: 'http://54.178.175.221:8080',
+        target: 'http://13.231.197.178:8080',
         //target: 'http://localhost:8080',//本地地址
         // target: 'http://gopikachu.top:8080',// 线上部署地址
         changeOrigin: true,
