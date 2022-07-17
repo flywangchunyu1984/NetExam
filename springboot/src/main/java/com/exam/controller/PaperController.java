@@ -6,9 +6,14 @@ import com.exam.serviceimpl.JudgeQuestionServiceImpl;
 import com.exam.serviceimpl.MultiQuestionServiceImpl;
 import com.exam.serviceimpl.PaperServiceImpl;
 import com.exam.util.ApiResultHandler;
+import com.exam.util.GetRandomInt;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,19 +32,35 @@ public class PaperController {
 
     @Autowired
     private FillQuestionServiceImpl fillQuestionService;
+    
+    @Value("${netexamquestioncount}")
+    private String QuestionCount;//øº ‘Ã‚ƒø◊‹ ˝
+    
     @GetMapping("/papers")
     public ApiResult<PaperManage> findAll() {
-       ApiResult res =  ApiResultHandler.buildApiResult(200,"ËØ∑Ê±ÇÊàêÂäü",paperService.findAll());
+       ApiResult res =  ApiResultHandler.buildApiResult(200,"«Î«Û≥…π¶",paperService.findAll());
        return  res;
     }
 
     @GetMapping("/paper/{paperId}")
     public Map<Integer, List<?>> findById(@PathVariable("paperId") Integer paperId) {
-        List<MultiQuestion> multiQuestionRes = multiQuestionService.findByIdAndType(paperId);   //ÈÄâÊã©È¢òÈ¢òÂ∫ì 1
-        List<FillQuestion> fillQuestionsRes = fillQuestionService.findByIdAndType(paperId);     //Â°´Á©∫È¢òÈ¢òÂ∫ì 2
-        List<JudgeQuestion> judgeQuestionRes = judgeQuestionService.findByIdAndType(paperId);   //Âà§Êñ≠È¢òÈ¢òÂ∫ì 3
+        List<MultiQuestion> multiQuestionRes = multiQuestionService.findByIdAndType(paperId);   //—°‘ÒÃ‚Ã‚ø‚ 1
+        List<FillQuestion> fillQuestionsRes = fillQuestionService.findByIdAndType(paperId);     //ÃÓø’Ã‚Ã‚ø‚ 2
+        List<JudgeQuestion> judgeQuestionRes = judgeQuestionService.findByIdAndType(paperId);   //≈–∂œÃ‚Ã‚ø‚ 3
+        List<MultiQuestion> multiQuestionRes_res = new ArrayList<MultiQuestion>();
+        Integer  QuestionCountloacl = Integer.valueOf(QuestionCount);
         Map<Integer, List<?>> map = new HashMap<>();
-        map.put(1,multiQuestionRes);
+        if (multiQuestionRes.size() > QuestionCountloacl){
+        	int[] arr = GetRandomInt.getRandomInt(QuestionCountloacl, multiQuestionRes.size());
+        	
+        	for (int i = 0; i < arr.length; i++) {
+        		multiQuestionRes_res.add(multiQuestionRes.get(arr[i]));
+            }
+        	map.put(1,multiQuestionRes_res);
+        }else {
+        	map.put(1,multiQuestionRes);
+        }
+             
         map.put(2,fillQuestionsRes);
         map.put(3,judgeQuestionRes);
         return  map;
@@ -49,8 +70,8 @@ public class PaperController {
     public ApiResult add(@RequestBody PaperManage paperManage) {
         int res = paperService.add(paperManage);
         if (res != 0) {
-            return ApiResultHandler.buildApiResult(200,"Ê∑ªÂä†ÊàêÂäü",res);
+            return ApiResultHandler.buildApiResult(200,"ÃÌº”≥…π¶",res);
         }
-        return ApiResultHandler.buildApiResult(400,"Ê∑ªÂä†Â§±Ë¥•",res);
+        return ApiResultHandler.buildApiResult(400,"ÃÌº” ß∞‹",res);
     }
 }
