@@ -7,10 +7,10 @@ import com.exam.serviceimpl.MultiQuestionServiceImpl;
 import com.exam.serviceimpl.PaperServiceImpl;
 import com.exam.util.ApiResultHandler;
 import com.exam.util.GetRandomInt;
+import com.exam.util.Md5Hash;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -56,9 +56,9 @@ public class PaperController {
         	for (int i = 0; i < arr.length; i++) {
         		multiQuestionRes_res.add(multiQuestionRes.get(arr[i]));
             }
-        	map.put(1,multiQuestionRes_res);
+        	map.put(1,md5Convert(multiQuestionRes_res));
         }else {
-        	map.put(1,multiQuestionRes);
+        	map.put(1,md5Convert(multiQuestionRes));
         }
              
         map.put(2,fillQuestionsRes);
@@ -73,5 +73,15 @@ public class PaperController {
             return ApiResultHandler.buildApiResult(200,"添加成功",res);
         }
         return ApiResultHandler.buildApiResult(400,"添加失败",res);
+    }
+    
+    public List<MultiQuestion> md5Convert(List<MultiQuestion> multiQuestionTmp) {
+    	List<MultiQuestion> multiQuestion_out = new ArrayList<MultiQuestion>();
+    	for (MultiQuestion multiQuestion : multiQuestionTmp) {
+			//multiQuestion.setRightAnswer(Md5Hash.convertMD5(multiQuestion.getRightAnswer()));
+			multiQuestion.setRightAnswer(Md5Hash.getStringMD5(multiQuestion.getRightAnswer()));
+    		multiQuestion_out.add(multiQuestion);
+        }
+    	return multiQuestion_out;
     }
 }

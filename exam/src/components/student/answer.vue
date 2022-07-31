@@ -447,30 +447,46 @@ export default {
           this.topic[3][this.index]["isMark"] = true //判断题标记
       }
     },
+    convertStr(val){
+       switch(val) { //选项1,2,3,4 转换为 "A","B","C","D"
+            case 1:
+              return "A"
+              break
+            case 2:
+              return "B"
+              break
+            case 3:
+              return "C"
+              break
+            case 4:
+              return "D"
+         }
+    },
     commit() { //答案提交计算分数
       /* 计算选择题总分 */
       let topic1Answer = this.topic1Answer
       let finalScore = 0
       topic1Answer.forEach((element,index) => { //循环每道选择题根据选项计算分数
         let right = null
+        //console.log('element=',element)
         if(element != null) {
           switch(element) { //选项1,2,3,4 转换为 "A","B","C","D"
-            case 1:
+            case "1":
               right = "A"
               break
-            case 2:
+            case "2":
               right = "B"
               break
-            case 3:
+            case "3":
               right = "C"
               break
-            case 4:
+            case "4":
               right = "D"
           }
-          if(right == this.topic[1][index].rightAnswer) { // 当前选项与正确答案对比
+          if((this.$md5(right) == this.topic[1][index].rightAnswer) || (this.$md5(right) == this.convertStr(this.topic[1][index].rightAnswer))) { // 当前选项与正确答案对比
             finalScore += this.topic[1][index].score // 计算总分数
           }
-          console.log(right,this.topic[1][index].rightAnswer)
+          //console.log(right,this.topic[1][index].rightAnswer)
         }
         // console.log(topic1Answer)
       })
@@ -551,7 +567,7 @@ export default {
           }
         }
       },1000 * 60)
-    }
+    }    
   },
   computed:mapState(["isPractice"])
 }
