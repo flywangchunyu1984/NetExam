@@ -1,21 +1,23 @@
 // 我的试卷页面
 <template>
   <div id="myExam">
-    <div class="title">我的试卷</div>
+    <div class="title">研修一覧</div>
     <div class="wrapper">
       <ul class="top">
-        <li class="order">试卷列表</li>
-        <li class="search-li"><div class="icon"><input type="text" placeholder="试卷名称" class="search" v-model="key"><i class="el-icon-search"></i></div></li>
-        <li><el-button type="primary" @click="search()">搜索试卷</el-button></li>
+        <li class="order">テスト一覧</li>
+        <li class="search-li"><div class="icon"><input type="text" placeholder="テスト名" class="search" v-model="key"><i class="el-icon-search"></i></div></li>
+        <li><el-button type="primary" @click="search()">検索</el-button></li>
       </ul>
       <ul class="paper" v-loading="loading">
         <li class="item" v-for="(item,index) in pagination.records" :key="index">
-          <h4 @click="toExamMsg(item.examCode)">{{item.source}}</h4>
+          <!-- <h4 @click="toExamMsg(item.examCode)">{{item.source}}</h4> -->
+          <!-- // 应需求改成,直接开始答题,跳过试卷详情页 -->
+          <h4 @click="toAnswer(item.examCode)">{{item.source}}</h4> 
           <!-- <p class="name">{{item.source}}-{{item.description}}</p> -->
           <div class="info">
             <i class="el-icon-loading"></i><span>{{item.examDate.substr(0,10)}}</span>
-            <i class="iconfont icon-icon-time"></i><span v-if="item.totalTime != null">限时{{item.totalTime}}分钟</span>
-            <i class="iconfont icon-fenshu"></i><span>满分{{item.totalScore}}分</span>
+            <!-- <i class="iconfont icon-icon-time"></i><span v-if="item.totalTime != null">限时{{item.totalTime}}分钟</span> -->
+            <i class="iconfont icon-fenshu"></i><span>全{{item.totalScore}}点</span>
           </div>
         </li>
       </ul>
@@ -93,7 +95,11 @@ export default {
     toExamMsg(examCode) {
       this.$router.push({path: '/examMsg', query: {examCode: examCode}})
       console.log(examCode)
-    }
+    },
+    //直接开始答题,跳过跳转到试卷详情页
+    toAnswer(id) {
+      this.$router.push({path:"/answer",query:{examCode: id}})
+    },
   }
 }
 </script>
@@ -133,7 +139,7 @@ export default {
   margin-right: 14px;
 }
 .paper .item {
-  width: 180px;
+  width: 400px;
   height:100px;
   border-radius: 4px;
   padding: 0px 10px;
@@ -160,6 +166,9 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 .top .el-icon-search {
   position: absolute;

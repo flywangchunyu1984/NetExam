@@ -2,7 +2,7 @@
 <template>
   <div id="msg">
     <div class="title">
-      <span>试卷列表</span>
+      <span>テスト一覧</span>
       <span>/  {{examData.source}}</span>
     </div>
     <div class="wrapper">
@@ -18,13 +18,13 @@
         </li>
       </ul>
       <ul class="bottom">
-        <li>更新于{{examData.examDate}}</li>
-        <li>来自 {{examData.institute}}</li>
+        <li>最終更新日時{{examData.examDate}}</li>
+        <!-- <li>来自 {{examData.institute}}</li> -->
         <li class="btn">{{examData.type}}</li>
-        <li class="right"><el-button @click="toAnswer(examData.examCode)">开始答题</el-button></li>
+        <li class="right"><el-button @click="toAnswer(examData.examCode)">回答開始</el-button></li>
       </ul>
       <ul class="info">
-        <li @click="dialogVisible = true"><a href="javascript:;"><i class="iconfont icon-info"></i>考生须知</a></li>
+        <li @click="dialogVisible = true"><a href="javascript:;"><i class="iconfont icon-info"></i>注意事項</a></li>
       </ul>
     </div>
     <div class="content">
@@ -34,13 +34,13 @@
             <div class="title">
               <span>{{examData.source}}</span><i class="header-icon el-icon-info"></i>
               <span class="time">{{examData.totalScore}}分 / {{examData.totalTime}}分钟</span>
-              <el-button type="primary" size="small">点击查看试题详情</el-button>
+              <el-button type="primary" size="small">詳細</el-button>
             </div>
           </template>
           <el-collapse class="inner">
             <el-collapse-item>
               <template slot="title" name="1">
-                <div class="titlei">选择题 (共{{topicCount[0]}}题 共计{{score[0]}}分)</div>
+                <div class="titlei">選択問題 (全{{topicCount[0]}}問 得点：{{score[0]}})</div>
               </template>
               <div class="contenti">
                 <ul class="question" v-for="(list, index) in topic[1]" :key="index">
@@ -75,12 +75,12 @@
     </div>
     <!--考生须知对话框-->
     <el-dialog
-      title="考生须知"
+      title="注意事項"
       :visible.sync="dialogVisible"
       width="30%">
       <span>{{examData.tips}}</span>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">知道了</el-button>
+        <el-button @click="dialogVisible = false">閉じる</el-button>
       </span>
     </el-dialog>
   </div>
@@ -162,7 +162,7 @@ export default {
 }
 .content .title .time {
   font-size: 16px;
-  margin-left: 420px;
+  margin-left: 300px;
   color: #999;
 }
 .content .stitle {
@@ -253,9 +253,9 @@ export default {
 .wrapper .right .score {
   position: absolute;
   left: 53px;
-  top: -5px;
-  padding: 1px 12px;
-  font-size: 20px;
+  top: -2.4px;
+  padding: 2px 12px;
+  font-size: 19px;
   color: #88949b;
   border: 1px dashed #88949b;
   border-left: none;

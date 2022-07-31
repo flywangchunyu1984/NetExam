@@ -2,16 +2,16 @@
 <template>
   <div id='manager'>
     <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-      <h3 class="alter">修改你的密码</h3>
-        <el-form-item label="密码" prop="pass" class="pass">
+      <h3 class="alter">パスワード変更</h3>
+        <el-form-item label="パスワード" prop="pass" class="pass">
         <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="确认密码" prop="checkPass">
+      <el-form-item label="確認パスワード" prop="checkPass">
         <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-        <el-button @click="resetForm('ruleForm2')">重置</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm2')">登録</el-button>
+        <el-button @click="resetForm('ruleForm2')">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -22,7 +22,7 @@
     data() {
       var validatePass = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请输入密码'));
+          callback(new Error('パスワードを入力してください'));
         } else {
           if (this.ruleForm2.checkPass !== '') {
             this.$refs.ruleForm2.validateField('checkPass');
@@ -32,9 +32,9 @@
       };
       var validatePass2 = (rule, value, callback) => {
         if (value === '') {
-          callback(new Error('请再次输入密码'));
+          callback(new Error('パスワードを再入力してください'));
         } else if (value !== this.ruleForm2.pass) {
-          callback(new Error('两次输入密码不一致!'));
+          callback(new Error('パスワード不一致!'));
         } else {
           callback();
         }
@@ -70,7 +70,7 @@
             }).then(res => {
               if(res.data != null ) { //修改成功提示
                 this.$message({
-                  message: '密码修改成功...',
+                  message: 'パスワードを変更しました...',
                   type: 'success'
                 })
               }

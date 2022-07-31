@@ -58,9 +58,9 @@ export default {
       if(role == 0) {
         this.menu.push({
           index: '5',
-          title: '教师管理',
+          title: '研修管理者管理',
           icon: 'icon-Userselect',
-          content:[{item1:'教师管理',path:'/teacherManage'},{item2: '添加教师',path: '/addTeacher'}],
+          content:[{item1:'研修管理者管理',path:'/teacherManage'},{item2: '研修管理者追加',path: '/addTeacher'}],
         })
       }
     }

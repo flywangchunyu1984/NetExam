@@ -10,7 +10,7 @@
            <i class="iconfont icon-user icon20"></i>
            <div class="msg"  v-if="flag" @click="flag = !flag">
              <p>姓名：{{userInfo.name}}</p>
-             <p>准考证号:  {{userInfo.id}}</p>
+             <p>社員ＩＤ:  {{userInfo.id}}</p>
            </div>
          </li>
          <li><i class="iconfont icon-arrLeft icon20"></i></li>
@@ -23,28 +23,28 @@
             <ul class="l-top">
               <li>
                 <a href="javascript:;"></a>
-                <span>当前</span>
+                <span>回答中</span>
               </li>
               <li>
                 <a href="javascript:;"></a>
-                <span>未答</span>
+                <span>未回答</span>
               </li>
               <li>
                 <a href="javascript:;"></a>
-                <span>已答</span>
+                <span>解答済</span>
               </li>
               <li>
                 <a href="javascript:;"></a>
-                <span>标记</span>
+                <span>マーク</span>
               </li>
             </ul>
             <div class="l-bottom">
               <div class="item" style="height:370px;overflow-y:auto">
-                <p>选择题部分</p>
+                <p>選択問題</p>
                 <ul>
                   <!-- <el-scrollbar> -->
                     <li v-for="(list, index1) in topic[1]" :key="index1">
-                      <a href="javascript:;" 
+                      <a href="javascript:;"
                         @click="change(index1)"
                         :class="{'border': index == index1 && currentType == 1,'bg': bg_flag && topic[1][index1].isClick == true}">
                         <span :class="{'mark': topic[1][index1].isMark == true}"></span>
@@ -54,7 +54,7 @@
                   <!-- </el-scrollbar> -->
                 </ul>
               </div>
-              <div class="item">
+              <!-- <div class="item">
                 <p>填空题部分</p>
                 <ul>
                   <li v-for="(list, index2) in topic[2]" :key="index2">
@@ -69,43 +69,43 @@
                     <a href="javascript:;" @click="judge(index3)" :class="{'border': index == index3 && currentType == 3,'bg': bg_flag && topic[3][index3].isClick == true}"><span :class="{'mark': topic[3][index3].isMark == true}"></span>{{topicCount[0]+topicCount[1]+index3+1}}</a>
                   </li>
                 </ul>
-              </div>
-              <div class="final" @click="commit()">结束考试</div>
+              </div> -->
+              <div class="final" @click="commit()">試験終了</div>
             </div>
           </div>
-        </transition>  
+        </transition>
         <!--右边选择答题区-->
         <transition name="slider-fade">
         <div class="right">
           <div class="title">
             <p>{{title}}</p>
             <i class="iconfont icon-right auto-right"></i>
-            <span>全卷共{{topicCount[0] + topicCount[1] + topicCount[2]}}题  <i class="iconfont icon-time"></i>倒计时：<b>{{time}}</b>分钟</span>
+            <span>全{{topicCount[0] + topicCount[1] + topicCount[2]}}問 </span>
           </div>
           <div class="content">
             <p class="topic"><span class="number">{{number}}</span>{{showQuestion}}</p>
             <div v-if="currentType == 1">
               <div style="width:250px">
                 <el-radio-group v-model="radio[index]" @change="getChangeLabel" >
-                  <el-radio label="1" border>{{showAnswer.answerA}}</el-radio>
-                  <el-radio label="2" border>{{showAnswer.answerB}}</el-radio>
-                  <el-radio label="3" border>{{showAnswer.answerC}}</el-radio>
+                  <el-radio label="1" border>{{showAnswer.answerA}}</el-radio><br/>
+                  <el-radio label="2" border>{{showAnswer.answerB}}</el-radio><br/>
+                  <el-radio label="3" border>{{showAnswer.answerC}}</el-radio><br/>
                   <el-radio label="4" border>{{showAnswer.answerD}}</el-radio>
                 </el-radio-group>
               </div>
-              
-              <div class="analysis" >
+
+              <!-- <div class="analysis" >
                 <ul>
-                  <li> 
-                        
+                  <li>
+
                        <el-tooltip placement="right">
                         <div slot="content">{{reduceAnswer.rightAnswer}}</div>
                         <el-button type="success">正确答案：</el-button>
                        </el-tooltip>
                       <span v-if="isSelected" style="font-weight:bold;font-size:24px">{{reduceAnswer.rightAnswer}},回答正确！！！</span>
                       <span v-else-if="isSelected === false" style="font-weight:bold;font-size:24px;color:red">{{reduceAnswer.rightAnswer}},回答错误✗✗✗</span>
-                    
-                  </li>  
+
+                  </li>
                   <li>
                     <el-tag>题目解析：</el-tag>
                     <span >{{radioName[0]}}</span>
@@ -115,9 +115,9 @@
                     <span v-else>{{reduceAnswer.analysis == null ? '暂无解析': reduceAnswer.analysis}}</span>
                   </li>
                 </ul>
-                
-                  
-                
+
+
+
               </div>
               <div class="analysis" v-if="isPractice">
                 <ul>
@@ -125,9 +125,9 @@
                   <li><el-tag>题目解析：</el-tag></li>
                   <li>{{reduceAnswer.analysis == null ? '暂无解析': reduceAnswer.analysis}}</li>
                 </ul>
-              </div>
+              </div> -->
             </div>
-            <div class="fill" v-if="currentType == 2">
+            <!-- <div class="fill" v-if="currentType == 2">
               <div v-for="(item,currentIndex) in part" :key="currentIndex">
                 <el-input placeholder="请填在此处"
                   v-model="fillAnswer[index][currentIndex]"
@@ -155,18 +155,18 @@
                   <li>{{topic[3][index].analysis == null ? '暂无解析': topic[3][index].analysis}}</li>
                 </ul>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="operation">
             <ul class="end">
-              <li @click="previous()"><i class="iconfont icon-previous"></i><span>上一题</span></li>
-              <li @click="mark()"><i class="iconfont icon-mark-o"></i><span>标记</span></li>
-              <li @click="next()"><span>下一题</span><i class="iconfont icon-next"></i></li>
+              <li @click="previous()"><i class="iconfont icon-previous"></i><span>前の問題</span></li>
+              <li @click="mark()"><i class="iconfont icon-mark-o"></i><span>マーク</span></li>
+              <li @click="next()"><span>次の問題</span><i class="iconfont icon-next"></i></li>
             </ul>
           </div>
         </div>
         </transition>
-     </div> 
+     </div>
   </div>
 </template>
 
@@ -188,7 +188,7 @@ export default {
       flag: false, //个人信息显示隐藏标识符
       currentType: 1, //当前题型类型  1--选择题  2--填空题  3--判断题
       radio: [], //保存考生所有选择题的选项
-      title: "请选择正确的选项",
+      title: "正しいと思う回答を選択してください",
       index: 0, //全局index
       userInfo: { //用户信息
         name: null,
@@ -236,7 +236,7 @@ export default {
       this.userInfo.id = this.$cookies.get("cid")
     },
     calcuScore() { //计算答题分数
-      
+
     },
     getExamData() { //获取当前试卷所有信息
       let date = new Date()
@@ -297,7 +297,7 @@ export default {
         }
         console.log(`总长度${len}`)
         console.log(`当前index:${index}`)
-        this.title = "请选择正确的选项"
+        this.title = "正しいと思う回答を選択してください"
         let Data = this.topic[1]
         // console.log(Data)
         this.showQuestion = Data[this.index].question //获取题目信息
@@ -335,7 +335,7 @@ export default {
           let part= this.showQuestion.split("()").length -1 //根据题目中括号的数量确定填空横线数量
           this.part = part
           this.number = this.topicCount[0] + index + 1
-        } 
+        }
       }else if(index >= len) {
         this.index = 0
         this.judge(this.index)
@@ -368,10 +368,10 @@ export default {
       //vue的dom更新是异步的，即当setter操作发生后，指令并不会立马更新，指令的更新操作会有一个延迟，当指令更新真正执行的时候，此时.text属性已经赋值，所以指令更新模板时得到的是新值。
       this.$set(this.radioName, 0, this.radioName[val])
       switch(this.reduceAnswer.rightAnswer) {
-        case "A": 
+        case "A":
           this.reduceAnswer.rightAnswer = 1
           break
-        case "B": 
+        case "B":
           this.reduceAnswer.rightAnswer = 2
           break
         case "C":
@@ -379,7 +379,7 @@ export default {
           break
         case "D":
           this.reduceAnswer.rightAnswer = 4
-          break  
+          break
       }
 
 
@@ -388,7 +388,7 @@ export default {
       }else{
         this.isSelected = false
       }
-      
+
       this.radio[this.index] = val //当前选择的序号
       if(val) {
         let data = this.topic[1]
@@ -396,7 +396,7 @@ export default {
         data[this.index]["isClick"] = true
       }
       /* 保存学生答题选项 */
-      this.topic1Answer[this.index] = val 
+      this.topic1Answer[this.index] = val
       console.log(this.radioName[0])
     },
     getJudgeLabel(val) {  //获取判断题作答选项
@@ -410,10 +410,10 @@ export default {
     previous() { //上一题
       this.index --
       switch(this.currentType) {
-        case 1: 
+        case 1:
           this.change(this.index)
           break
-        case 2: 
+        case 2:
           this.fill(this.index)
           break
         case 3:
@@ -424,10 +424,10 @@ export default {
     next() { //下一题
       this.index ++
       switch(this.currentType) {
-        case 1: 
+        case 1:
           this.change(this.index)
           break
-        case 2: 
+        case 2:
           this.fill(this.index)
           break
         case 3:
@@ -501,11 +501,11 @@ export default {
             finalScore += this.topic[3][index].score // 计算总分数
           }
       })
-      console.log(`目前总分${finalScore}`)
+      console.log(`得点：${finalScore}`)
       if(this.time != 0) {
-        this.$confirm("考试结束时间未到,是否提前交卷","友情提示",{
-          confirmButtonText: '立即交卷',
-          cancelButtonText: '再检查一下',
+        this.$confirm("試験を終了しますか","確認",{
+          confirmButtonText: 'はい',
+          cancelButtonText: 'いいえ',
           type: 'warning'
         }).then(() => {
           console.log("交卷")
@@ -526,11 +526,11 @@ export default {
           }).then(res => {
             if(res.data.code == 200) {
               this.$router.push({path:'/studentScore',query: {
-                score: finalScore, 
+                score: finalScore,
                 startTime: this.startTime,
                 endTime: this.endTime
               }})
-            }  
+            }
           })
         }).catch(() => {
           console.log("继续答题")
@@ -665,7 +665,7 @@ export default {
 }
 .content .topic {
   padding: 20px 0px;
-  padding-top: 30px; 
+  padding-top: 30px;
 }
 .right .content {
   background-color: #fff;
@@ -751,7 +751,7 @@ export default {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.l-bottom .item ul li a { 
+.l-bottom .item ul li a {
   position: relative;
   justify-content: center;
   display: inline-flex;
