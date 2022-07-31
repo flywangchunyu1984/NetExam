@@ -162,7 +162,7 @@ export default {
 }
 .content .title .time {
   font-size: 16px;
-  margin-left: 420px;
+  margin-left: 300px;
   color: #999;
 }
 .content .stitle {
@@ -253,9 +253,9 @@ export default {
 .wrapper .right .score {
   position: absolute;
   left: 53px;
-  top: -5px;
-  padding: 1px 12px;
-  font-size: 20px;
+  top: -2.4px;
+  padding: 2px 12px;
+  font-size: 19px;
   color: #88949b;
   border: 1px dashed #88949b;
   border-left: none;

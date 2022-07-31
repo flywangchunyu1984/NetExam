@@ -9,11 +9,11 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',//本地'/'
+    assetsPublicPath: './',//本地'/'
     proxyTable: {
       '/api': {
-        //target: 'http://13.115.245.46:8080',
-        target: 'http://localhost:8080',//本地地址
+        target: 'http://13.231.197.178:8080',
+        //target: 'http://localhost:8080',//本地地址
         // target: 'http://gopikachu.top:8080',// 线上部署地址
         changeOrigin: true,
         pathRewrite: {
