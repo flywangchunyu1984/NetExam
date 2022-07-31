@@ -34,14 +34,15 @@
     </el-row>
     <el-row class="footer">
       <el-col>
-        <p class="msg2">版权所有 ©2019 <!--重庆文理学院计科2班余晓江--> 保留所有权利  <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备19001371号</a></p>
+        <p class="msg2">版权所有 ©2019 保留所有权利  <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备19001371号</a></p>
       </el-col>
     </el-row>
-    <section class="remind">
-      <span>管理员账号：9527</span>
+    <!-- <section class="remind">
+      <span>管理员账号：100000001</span>
       <span>教师账号：20081001</span>
+      <span>学生账号：20154001</span>
       <span>密码都是：123456</span>
-    </section>
+    </section> -->
   </div>
 </template>
 
