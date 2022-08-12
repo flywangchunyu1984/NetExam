@@ -8,6 +8,7 @@ import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueCookies from 'vue-cookies'
+import md5 from 'js-md5'
 
 Vue.use(ElementUI)
 Vue.use(VueCookies)
@@ -16,6 +17,7 @@ Vue.config.productionTip = false
 Vue.prototype.bus = new Vue()
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
+Vue.prototype.$md5=md5
 
 new Vue({
   el: '#app',
