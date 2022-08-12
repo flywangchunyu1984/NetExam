@@ -10,7 +10,7 @@
            <i class="iconfont icon-user icon20"></i>
            <div class="msg"  v-if="flag" @click="flag = !flag">
              <p>姓名：{{userInfo.name}}</p>
-             <p>准考证号:  {{userInfo.id}}</p>
+             <p>社員ＩＤ:  {{userInfo.id}}</p>
            </div>
          </li>
          <li><i class="iconfont icon-arrLeft icon20"></i></li>
@@ -23,24 +23,24 @@
             <ul class="l-top">
               <li>
                 <a href="javascript:;"></a>
-                <span>当前</span>
+                <span>回答中</span>
               </li>
               <li>
                 <a href="javascript:;"></a>
-                <span>未答</span>
+                <span>未回答</span>
               </li>
               <li>
                 <a href="javascript:;"></a>
-                <span>已答</span>
+                <span>解答済</span>
               </li>
               <li>
                 <a href="javascript:;"></a>
-                <span>标记</span>
+                <span>マーク</span>
               </li>
             </ul>
             <div class="l-bottom">
               <div class="item" style="height:370px;overflow-y:auto">
-                <p>选择题部分</p>
+                <p>選択問題</p>
                 <ul>
                   <!-- <el-scrollbar> -->
                     <li v-for="(list, index1) in topic[1]" :key="index1">
@@ -70,7 +70,11 @@
                   </li>
                 </ul>
               </div> -->
+<<<<<<< HEAD
               <div class="final" @click="commit()">结束考试</div>
+=======
+              <div class="final" @click="commit()">試験終了</div>
+>>>>>>> refs/heads/saika
             </div>
           </div>
         </transition>
@@ -80,7 +84,7 @@
           <div class="title">
             <p>{{title}}</p>
             <i class="iconfont icon-right auto-right"></i>
-            <span>全卷共{{topicCount[0] + topicCount[1] + topicCount[2]}}题  <i class="iconfont icon-time"></i>倒计时：<b>{{time}}</b>分钟</span>
+            <span>全{{topicCount[0] + topicCount[1] + topicCount[2]}}問 </span>
           </div>
           <div class="content">
             <p class="topic"><span class="number">{{number}}</span>{{showQuestion}}</p>
@@ -159,9 +163,9 @@
           </div>
           <div class="operation">
             <ul class="end">
-              <li @click="previous()"><i class="iconfont icon-previous"></i><span>上一题</span></li>
-              <li @click="mark()"><i class="iconfont icon-mark-o"></i><span>标记</span></li>
-              <li @click="next()"><span>下一题</span><i class="iconfont icon-next"></i></li>
+              <li @click="previous()"><i class="iconfont icon-previous"></i><span>前の問題</span></li>
+              <li @click="mark()"><i class="iconfont icon-mark-o"></i><span>マーク</span></li>
+              <li @click="next()"><span>次の問題</span><i class="iconfont icon-next"></i></li>
             </ul>
           </div>
         </div>
@@ -188,7 +192,7 @@ export default {
       flag: false, //个人信息显示隐藏标识符
       currentType: 1, //当前题型类型  1--选择题  2--填空题  3--判断题
       radio: [], //保存考生所有选择题的选项
-      title: "请选择正确的选项",
+      title: "正しいと思う回答を選択してください",
       index: 0, //全局index
       userInfo: { //用户信息
         name: null,
@@ -297,7 +301,7 @@ export default {
         }
         console.log(`总长度${len}`)
         console.log(`当前index:${index}`)
-        this.title = "请选择正确的选项"
+        this.title = "正しいと思う回答を選択してください"
         let Data = this.topic[1]
         // console.log(Data)
         this.showQuestion = Data[this.index].question //获取题目信息
@@ -517,11 +521,11 @@ export default {
             finalScore += this.topic[3][index].score // 计算总分数
           }
       })
-      console.log(`目前总分${finalScore}`)
+      console.log(`得点：${finalScore}`)
       if(this.time != 0) {
-        this.$confirm("考试结束时间未到,是否提前交卷","友情提示",{
-          confirmButtonText: '立即交卷',
-          cancelButtonText: '再检查一下',
+        this.$confirm("試験を終了しますか","確認",{
+          confirmButtonText: 'はい',
+          cancelButtonText: 'いいえ',
           type: 'warning'
         }).then(() => {
           console.log("交卷")

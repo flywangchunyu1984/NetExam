@@ -34,19 +34,19 @@ public class PaperController {
     private FillQuestionServiceImpl fillQuestionService;
     
     @Value("${netexamquestioncount}")
-    private String QuestionCount;//¿¼ÊÔÌâÄ¿×ÜÊý
+    private String QuestionCount;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
     
     @GetMapping("/papers")
     public ApiResult<PaperManage> findAll() {
-       ApiResult res =  ApiResultHandler.buildApiResult(200,"ÇëÇó³É¹¦",paperService.findAll());
+       ApiResult res =  ApiResultHandler.buildApiResult(200,"ï¿½ï¿½ï¿½ï¿½É¹ï¿½",paperService.findAll());
        return  res;
     }
 
     @GetMapping("/paper/{paperId}")
     public Map<Integer, List<?>> findById(@PathVariable("paperId") Integer paperId) {
-        List<MultiQuestion> multiQuestionRes = multiQuestionService.findByIdAndType(paperId);   //Ñ¡ÔñÌâÌâ¿â 1
-        List<FillQuestion> fillQuestionsRes = fillQuestionService.findByIdAndType(paperId);     //Ìî¿ÕÌâÌâ¿â 2
-        List<JudgeQuestion> judgeQuestionRes = judgeQuestionService.findByIdAndType(paperId);   //ÅÐ¶ÏÌâÌâ¿â 3
+        List<MultiQuestion> multiQuestionRes = multiQuestionService.findByIdAndType(paperId);   //Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1
+        List<FillQuestion> fillQuestionsRes = fillQuestionService.findByIdAndType(paperId);     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2
+        List<JudgeQuestion> judgeQuestionRes = judgeQuestionService.findByIdAndType(paperId);   //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3
         List<MultiQuestion> multiQuestionRes_res = new ArrayList<MultiQuestion>();
         Integer  QuestionCountloacl = Integer.valueOf(QuestionCount);
         Map<Integer, List<?>> map = new HashMap<>();
@@ -70,9 +70,9 @@ public class PaperController {
     public ApiResult add(@RequestBody PaperManage paperManage) {
         int res = paperService.add(paperManage);
         if (res != 0) {
-            return ApiResultHandler.buildApiResult(200,"Ìí¼Ó³É¹¦",res);
+            return ApiResultHandler.buildApiResult(200,"ï¿½ï¿½Ó³É¹ï¿½",res);
         }
-        return ApiResultHandler.buildApiResult(400,"Ìí¼ÓÊ§°Ü",res);
+        return ApiResultHandler.buildApiResult(400,"ï¿½ï¿½ï¿½Ê§ï¿½ï¿½",res);
     }
     
     public List<MultiQuestion> md5Convert(List<MultiQuestion> multiQuestionTmp) {

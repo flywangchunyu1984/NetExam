@@ -1,12 +1,12 @@
 //显示学生成绩
 <template>
   <div class="table">
-    <p class="title">我的分数</p>
+    <p class="title">研修結果</p>
     <section class="content-el">
       <el-table ref="filterTable" :data="score" v-loading="loading">
         <el-table-column
           prop="answerDate"
-          label="考试日期"
+          label="研修日付"
           sortable
           width="300"
           column-key="answerDate"
@@ -22,10 +22,14 @@
             <el-tag>{{scope.row.subject}}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="etScore" label="考试分数" width="200"></el-table-column>
-        <el-table-column label="是否及格" width="100">
+        <el-table-column prop="etScore" label="テスト得点" width="200"></el-table-column>
+        <el-table-column label="合格状況" width="100">
           <template slot-scope="scope">
+<<<<<<< HEAD
             <el-tag :type="scope.row.etScore>= 80 ? 'success' : 'danger'">{{scope.row.etScore >= 80 ? "及格" : "不及格"}}</el-tag>
+=======
+            <el-tag :type="scope.row.etScore>= 80 ? 'success' : 'danger'">{{scope.row.etScore >= 80 ? "合格" : "不合格"}}</el-tag>
+>>>>>>> refs/heads/saika
           </template>
         </el-table-column>
       </el-table>

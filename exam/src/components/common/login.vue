@@ -5,26 +5,26 @@
     <el-row class="main-container">
       <el-col :lg="8" :xs="16" :md="10" :span="10">
         <div class="top">
-          <i class="iconfont icon-kaoshi"></i><span class="title">在线考试系统</span>
+          <i class="iconfont icon-kaoshi"></i><span class="title">セキュリティ研修テストシステム</span>
         </div>
         <div class="bottom">
           <div class="container">
-            <p class="title">账号登录</p>
+            <p class="title">ログイン</p>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-              <el-form-item label="用户名">
-                <el-input v-model.number="formLabelAlign.username" placeholder="请输入用户名"></el-input>
+              <el-form-item label="ユーザＩＤ（メールアカウント）">
+                <el-input v-model.number="formLabelAlign.username" placeholder="ユーザＩＤを入力してください。"></el-input>
               </el-form-item>
-              <el-form-item label="密码">
-                <el-input v-model="formLabelAlign.password" placeholder="请输入密码" type='password'></el-input>
+              <el-form-item label="パスワード">
+                <el-input v-model="formLabelAlign.password" placeholder="パスワードを入力してください。" type='password'></el-input>
               </el-form-item>
               <div class="submit">
-                <el-button type="primary" class="row-login" @click="login()">登录</el-button>
+                <el-button type="primary" class="row-login" @click="login()">ログイン</el-button>
               </div>
               <!-- <div class="options">
-                <p class="find"><a href="javascript:;">找回密码</a></p>
+                <p class="find"><a href="javascript:;">パスワードを忘れた場合</a></p>
                 <div class="register">
-                  <span>没有账号?</span>
-                  <span><a href="javascript:;">去注册</a></span>
+                  <span>アカウントがない場合</span>
+                  <span><a href="javascript:;">管理者に連絡してください。</a></span>
                 </div>
               </div> -->
             </el-form>
@@ -34,13 +34,13 @@
     </el-row>
     <el-row class="footer">
       <el-col>
-        <p class="msg2">版权所有 ©2019 <!--重庆文理学院计科2班余晓江--> 保留所有权利  <a href="http://beian.miit.gov.cn/" target="_blank">渝ICP备19001371号</a></p>
+        <p class="msg2"><a href="http://ietech.co.jp" target="_blank">新日テクノロジー</a></p>
       </el-col>
     </el-row>
     <section class="remind">
-      <span>管理员账号：9527</span>
-      <span>教师账号：20081001</span>
-      <span>密码都是：123456</span>
+      <span>スーバー管理者アカウント：9527</span>
+      <span>研修管理者：20081001</span>
+      <span>パスワード：123456</span>
     </section>
   </div>
 </template>
@@ -98,7 +98,7 @@ export default {
           this.$message({
             showClose: true,
             type: 'error',
-            message: '用户名或者密码错误'
+            message: 'ユーザＩＤまたはパスワードが間違っています'
           })
         }
       })

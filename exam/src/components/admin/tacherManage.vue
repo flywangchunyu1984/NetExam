@@ -3,16 +3,14 @@
   <div class="all">
     <el-table :data="pagination.records" border>
       <el-table-column fixed="left" prop="teacherName" label="姓名" width="180"></el-table-column>
-      <el-table-column prop="institute" label="学院" width="200"></el-table-column>
-      <el-table-column prop="sex" label="性别" width="120"></el-table-column>
-      <el-table-column prop="tel" label="联系方式" width="120"></el-table-column>
-      <el-table-column prop="email" label="密码" width="120"></el-table-column>
-      <el-table-column prop="cardId" label="身份证号" width="120"></el-table-column>
-      <el-table-column prop="type" label="职称" width="120"></el-table-column>
+      <el-table-column prop="sex" label="メール" width="120"></el-table-column>
+      <el-table-column prop="tel" label="携帯番号" width="120"></el-table-column>
+      <el-table-column prop="email" label="パスワード" width="120"></el-table-column>
+      <el-table-column prop="cardId" label="社員ＩＤ" width="120"></el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template slot-scope="scope">
-          <el-button @click="checkGrade(scope.row.teacherId)" type="primary" size="small">编辑</el-button>
-          <el-button @click="deleteById(scope.row.teacherId)" type="danger" size="small">删除</el-button>
+          <el-button @click="checkGrade(scope.row.teacherId)" type="primary" size="small">編集</el-button>
+          <el-button @click="deleteById(scope.row.teacherId)" type="danger" size="small">削除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -37,29 +35,23 @@
           <el-form-item label="姓名">
             <el-input v-model="form.teacherName"></el-input>
           </el-form-item>
-          <el-form-item label="学院">
-            <el-input v-model="form.institute"></el-input>
-          </el-form-item>
-          <el-form-item label="性别">
+          <el-form-item label="メール">
             <el-input v-model="form.sex"></el-input>
           </el-form-item>
-          <el-form-item label="电话号码">
+          <el-form-item label="携帯番号">
             <el-input v-model="form.tel"></el-input>
           </el-form-item>
-          <el-form-item label="密码">
+          <el-form-item label="パスワード">
             <el-input v-model="form.pwd"></el-input>
           </el-form-item>
-          <el-form-item label="身份证号">
+          <el-form-item label="社員ＩＤ">
             <el-input v-model="form.cardId"></el-input>
-          </el-form-item>
-          <el-form-item label="职称">
-            <el-input v-model="form.type"></el-input>
           </el-form-item>
         </el-form>
       </section>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submit()">确 定</el-button>
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="submit()">確定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -106,9 +98,9 @@ export default {
       })
     },
     deleteById(teacherId) { //删除当前学生
-      this.$confirm("确定删除当前教师吗？删除后无法恢复","Warning",{
-        confirmButtonText: '确定删除',
-        cancelButtonText: '算了,留着吧',
+      this.$confirm("該当研修管理者を削除しますか？削除した場合は復旧できません。","Warning",{
+        confirmButtonText: '削除',
+        cancelButtonText: '取消',
         type: 'danger'
       }).then(()=> { //确认删除
         this.$axios({
@@ -141,7 +133,7 @@ export default {
       })
     },
     handleClose(done) { //关闭提醒
-      this.$confirm('确认关闭？')
+      this.$confirm('閉じますか？')
         .then(_ => {
           done();
         }).catch(_ => {});
