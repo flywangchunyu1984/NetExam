@@ -3,7 +3,7 @@
   <div id="grade">
     <div ref="box" class="box"></div>
     <div class="notFound" v-if="isNull">
-      <i class="iconfont icon-LC_icon_tips_fill"></i><span>該当社員はテストを受けていません。</span>
+      <i class="iconfont icon-LC_icon_tips_fill"></i><span>该考生未参加考试</span>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
         if(res.data.code == 200) {
           let rootData = res.data.data
           rootData.forEach((element,index) => {
-            this.tableDataX.push(`第${index + 1}回`)
+            this.tableDataX.push(`第${index + 1}次`)
             this.tableDataY.push(element.etScore)
           });
           let boxDom = this.$refs["box"];

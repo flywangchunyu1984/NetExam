@@ -10,16 +10,16 @@
       </div>
       <div class="show">
         <div class="img1" :class="{'img1Transform': imgShow}">
-          <img :src="imgSrc.fail1" alt="不合格" v-if="score < 60">
-          <img :src="imgSrc.pass1" alt="合格" v-if="score >= 60">
+          <img :src="imgSrc.fail1" alt="不合格" v-if="score < 80">
+          <img :src="imgSrc.pass1" alt="合格" v-if="score >= 80">
         </div>
         <div class="number" :class="{'border': isTransition}">
           <span>{{score}}</span>
           <span>得点</span>
         </div>
         <div class="img2" :class="{'img2Transform': imgShow}">
-          <img :src="imgSrc.fail2" alt="不合格" v-if="score < 60">
-          <img :src="imgSrc.pass2" alt="合格" v-if="score >= 60">
+          <img :src="imgSrc.fail2" alt="不合格" v-if="score < 80">
+          <img :src="imgSrc.pass2" alt="合格" v-if="score >= 80">
         </div>
       </div>
       <ul class="time">

@@ -9,11 +9,11 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',//本地'/'
+    assetsPublicPath: '/',//本地'/'
     proxyTable: {
       '/api': {
-        target: 'http://13.231.197.178:8080',
-        //target: 'http://localhost:8080',//本地地址
+        //target: 'http://192.168.56.10:8080',
+        target: 'http://localhost:8080',//本地地址
         // target: 'http://gopikachu.top:8080',// 线上部署地址
         changeOrigin: true,
         pathRewrite: {
@@ -53,7 +53,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',//本地'/'//net'./'
+    assetsPublicPath: '/',//本地'/'//net'./'
 
     /**
      * Source Maps
