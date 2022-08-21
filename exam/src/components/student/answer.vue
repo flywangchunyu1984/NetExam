@@ -70,11 +70,7 @@
                   </li>
                 </ul>
               </div> -->
-<<<<<<< HEAD
-              <div class="final" @click="commit()">结束考试</div>
-=======
               <div class="final" @click="commit()">試験終了</div>
->>>>>>> refs/heads/saika
             </div>
           </div>
         </transition>

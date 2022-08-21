@@ -25,11 +25,7 @@
         <el-table-column prop="etScore" label="テスト得点" width="200"></el-table-column>
         <el-table-column label="合格状況" width="100">
           <template slot-scope="scope">
-<<<<<<< HEAD
-            <el-tag :type="scope.row.etScore>= 80 ? 'success' : 'danger'">{{scope.row.etScore >= 80 ? "及格" : "不及格"}}</el-tag>
-=======
             <el-tag :type="scope.row.etScore>= 80 ? 'success' : 'danger'">{{scope.row.etScore >= 80 ? "合格" : "不合格"}}</el-tag>
->>>>>>> refs/heads/saika
           </template>
         </el-table-column>
       </el-table>
