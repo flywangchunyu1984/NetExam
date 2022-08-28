@@ -7,10 +7,11 @@ import echarts from 'echarts'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/ja'
 import VueCookies from 'vue-cookies'
 import md5 from 'js-md5'
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, {locale})
 Vue.use(VueCookies)
 
 Vue.config.productionTip = false
