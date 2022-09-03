@@ -85,7 +85,7 @@
           <div class="content">
             <p class="topic"><span class="number">{{number}}</span>{{showQuestion}}</p>
             <div v-if="currentType == 1">
-              <div style="width:250px">
+              <div style="width:100%">
                 <el-radio-group v-model="radio[index]" @change="getChangeLabel" >
                   <el-radio label="1" border>{{showAnswer.answerA}}</el-radio><br/>
                   <el-radio label="2" border>{{showAnswer.answerB}}</el-radio><br/>

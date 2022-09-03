@@ -5,13 +5,16 @@
     <el-row class="main-container">
       <el-col :lg="8" :xs="16" :md="10" :span="10">
         <div class="top">
-          <i class="iconfont icon-kaoshi"></i><span class="title">セキュリティ研修テストシステム</span>
+          <span><img src="../../assets/img/logo.png"></span> 
         </div>
+        <div class="title-login">
+          <span>セキュリティ研修テストシステム</span>
+        </div>
+        <br/>
         <div class="bottom">
-          <div class="container">
-            <p class="title">ログイン</p>
-            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-              <el-form-item label="ユーザＩＤ（メールアカウント）">
+          <div class="container" style="width:80%">
+            <el-form :label-position="labelPosition" label-width="35%" :model="formLabelAlign">
+              <el-form-item label="メールアカウント">
                 <el-input v-model.number="formLabelAlign.username" placeholder="ユーザＩＤを入力してください。"></el-input>
               </el-form-item>
               <el-form-item label="パスワード">
@@ -37,11 +40,11 @@
         <p class="msg2"><a href="http://ietech.co.jp" target="_blank">新日テクノロジー</a></p>
       </el-col>
     </el-row>
-    <section class="remind">
+    <!-- <section class="remind">
       <span>スーバー管理者アカウント：9527</span>
       <span>研修管理者：20081001</span>
       <span>パスワード：123456</span>
-    </section>
+    </section> -->
   </div>
 </template>
 
@@ -129,6 +132,7 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 .container {
+  margin-top: 32px;
   margin-bottom: 32px;
 }
 .container .el-radio-group {
@@ -166,7 +170,7 @@ a:link {
   justify-content: center;
 }
 #login .top .icon-kaoshi {
-  font-size: 80px;
+  font-size: 70px;
 }
 #login .top .title {
   margin-top: 20px;
@@ -221,5 +225,11 @@ a:link {
 }
 .bottom .options .register span:nth-child(1) {
   color: #8C8C8C;
+}
+#login .main-container .title-login  {
+  font-size: 33px;
+  color: #38015d;
+  display: flex;
+  justify-content: center;
 }
 </style>
