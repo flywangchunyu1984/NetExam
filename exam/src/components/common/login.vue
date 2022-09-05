@@ -5,7 +5,7 @@
     <el-row class="main-container">
       <el-col :lg="8" :xs="16" :md="10" :span="10">
         <div class="top">
-          <span><img src="../../assets/img/logo.png"></span> 
+          <span><img src="../../assets/img/icon.png"></span> 
         </div>
         <div class="title-login">
           <span>セキュリティ研修テストシステム</span>
@@ -154,7 +154,7 @@ a:link {
   width: 100%;
   overflow-y: auto;
   height: 100%;
-  background: url('../../assets/img/loginbg.png')center top / cover no-repeat;
+  background: url('../../assets/img/loginbg.jpeg')center top / cover no-repeat;
   background-color: #b6bccdd1 !important;
 }
 #login .main-container {
