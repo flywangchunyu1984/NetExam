@@ -1,12 +1,12 @@
 <!--管理中心-->
 <template>
   <div id='manager'>
-    <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+    <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width=auto class="demo-ruleForm">
       <h3 class="alter">パスワード変更</h3>
         <el-form-item label="パスワード" prop="pass" class="pass">
         <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="確認パスワード" prop="checkPass">
+      <el-form-item label="確認パスワード" prop="checkPass" class="pass">
         <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item>
@@ -89,10 +89,11 @@
 </script>
 
 <style scoped>
-#manager .pass  label{
+#manager .pass .label{
   color: red;
   font-size: 20px;
 }
+
 #manager {
   width: 600px;
   margin: 0 auto;

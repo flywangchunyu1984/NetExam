@@ -15,7 +15,7 @@
           <div class="container" style="width:80%">
             <el-form :label-position="labelPosition" label-width="35%" :model="formLabelAlign">
               <el-form-item label="メールアカウント">
-                <el-input v-model.number="formLabelAlign.username" placeholder="ユーザＩＤを入力してください。"></el-input>
+                <el-input v-model="formLabelAlign.email" placeholder="ユーザＩＤを入力してください。"></el-input>
               </el-form-item>
               <el-form-item label="パスワード">
                 <el-input v-model="formLabelAlign.password" placeholder="パスワードを入力してください。" type='password'></el-input>
@@ -59,8 +59,8 @@ export default {
       role: 2,
       labelPosition: 'left',
       formLabelAlign: {
-        username: '20154084',
-        password: '123456'
+      //  username: '20154084',
+      //  password: '123456'
       }
     }
   },

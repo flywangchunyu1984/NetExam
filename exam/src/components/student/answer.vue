@@ -10,7 +10,7 @@
            <i class="iconfont icon-user icon20"></i>
            <div class="msg"  v-if="flag" @click="flag = !flag">
              <p>姓名：{{userInfo.name}}</p>
-             <p>社員ＩＤ:  {{userInfo.id}}</p>
+             <!--p>社員ＩＤ:  {{userInfo.id}}</p-->
            </div>
          </li>
          <li><i class="iconfont icon-arrLeft icon20"></i></li>
