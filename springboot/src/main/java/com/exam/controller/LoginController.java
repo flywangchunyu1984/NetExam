@@ -19,19 +19,20 @@ public class LoginController {
     @PostMapping("/login")
     public ApiResult login(@RequestBody Login login) {
 
-        Integer username = login.getUsername();
+//    	Integer username = login.getUsername();
+    	String email = login.getEmail();
         String password = login.getPassword();
-        Admin adminRes = loginService.adminLogin(username, password);
+        Admin adminRes = loginService.adminLogin(email, password);
         if (adminRes != null) {
             return ApiResultHandler.buildApiResult(200, "请求成功", adminRes);
         }
 
-        Teacher teacherRes = loginService.teacherLogin(username,password);
+        Teacher teacherRes = loginService.teacherLogin(email,password);
         if (teacherRes != null) {
             return ApiResultHandler.buildApiResult(200, "请求成功", teacherRes);
         }
 
-        Student studentRes = loginService.studentLogin(username,password);
+        Student studentRes = loginService.studentLogin(email,password);
         if (studentRes != null) {
             return ApiResultHandler.buildApiResult(200, "请求成功", studentRes);
         }
